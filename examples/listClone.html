@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Playlist List Example</title>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script>
+  $(document).ready(function(e) {
+        
+		//get references to the two list divs
+		var firstDiv = $("#divA");
+		var secondDiv = $("#divB");
+		
+		//dummy data
+		//makes 10 paragraph of two words randomly placed together
+		var words = [ "batman", "cat", "plural", "banana", "tango", "foxtrot" ];
+		var phrases = [];
+		
+		for( var i = 0; i < 10; i++) {
+			
+			var rnd1 = Math.floor( Math.random() * words.length );
+			var rnd2 = Math.floor( Math.random() * words.length );
+			phrases.push( words[rnd1] + " " + words[rnd2]  );
+			
+			firstDiv.append( "<p data-index='" + i + "'>" + phrases[i] + " <span class='searchItems'> -> </span></p>" );
+			
+		}
+		
+		$(".searchItems").click(function() {
+			var parentIndex = $(this).parent().data("index");
+			var associatedData = phrases[ parentIndex ];
+			secondDiv.append( "<li>" + associatedData + "</li>" );
+		})
+		
+    });
+</script>
+<style>
+
+	.searchItems {
+		cursor: pointer;	
+	}
+
+	.col {
+		width: 350px;
+		float: left;	
+	}
+	
+	#divA {
+		background: #AAA;	
+	}
+	
+	#divB {
+		background: #F60;	
+	}
+</style>
+</head>
+<body>
+	<div id="divA" class="col">
+    	
+    </div>
+    <div  class="col">
+    	<ol id="divB">
+        
+        </ol>
+    </div>
+</body>
+</html>
