@@ -22,7 +22,7 @@
 						secondRow.append("<div class='ele'>" + data.comedy[i] + "</div>");
 
 					}
-					
+
 				})
 
 				show_row();
@@ -35,10 +35,10 @@
 					// You migth want to work around here!
 					//38 = up
 					//40 = down
-					if(e.which == 38) {
+					if(e.which == 37) {
 						cur_row --;
 						show_row();
-					} else if (e.which == 40) {
+					} else if (e.which == 39) {
 						cur_row ++;
 						show_row();
 					}
@@ -49,7 +49,7 @@
 						cur_row = 0;
 					}
 
-					
+
 				});
 
 
@@ -78,12 +78,13 @@
 					var targChildren = targRow.children();
 
 					for(var i = 0; i < targChildren.length; i++) {
-						$(targChildren[i]).css("opacity", 0).css("marginTop", 0).delay(500 + 500 * i).animate(
-							{
-								opacity: 1,
-								marginTop: 7
-							},
-							700
+												
+							$(targChildren[i]).css("height", 50).css("width", 50).delay(500 + 500 * i).animate(
+							{	
+								height: 100,
+								width: 100
+								},
+								700
 						)
 					}
 
